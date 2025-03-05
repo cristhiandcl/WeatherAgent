@@ -1,0 +1,870 @@
+body {
+	font-family: 'Open Sans Condensed', sans-serif;
+	height: 100vh;
+}
+
+/* -----------------------------------
+  STYLING GENERAL CHATBOT CONTAINER
+--------------------------------------
+*/
+
+.merli-bot strong,
+.merli-bot span,
+.merli-bot-p-alert-first-day,
+.merli-bot-p-default-alert {
+	font-weight: bold;
+}
+
+.flow-options-nav {
+	position: absolute;
+	top: 64px;
+	right: 0;
+	background-color: white;
+	border-radius: 0.5em;
+	padding: 0.2em;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+	width: 100%;
+	max-width: 120px;
+	opacity: 0;
+	transition: opacity 0.1s ease-in;
+}
+
+.flow-options-nav.show {
+	opacity: 0.8;
+}
+
+
+.flow-options-nav button {
+	display: inline;
+	font-size: 12px;
+	width: 100%;
+	background-color: inherit;
+	border-radius: none;
+	border: none;
+	justify-content: center;
+	padding: 0.5em 0;
+	cursor: pointer;
+	transition: transform 0.3s ease, background-color 0.3s ease;
+}
+
+.flow-options-nav button:hover {
+	background-color: #f0f0f0;
+	transform: scale(1.01);
+}
+
+.merli-initial-user-info {
+	position: absolute;
+	background-color: white;
+	border-radius: 0.5em;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+	width: 370px;
+	top: 95px;
+	left: 41px;
+}
+
+.merli-initial-user-info header {
+	font-size: 1.06em;
+	background: linear-gradient(89.96deg,
+			#170000 -58.42%,
+			#350a06 -24.64%,
+			#56070c 9.13%,
+			#6f1f1f 72.66%,
+			#8f3d38 91.76%,
+			#cb7169 110.46%);
+	color: white;
+	font-weight: bolder;
+	padding: 2px 0;
+	text-align: center;
+	border-radius: 0.5em 0.5em 0 0;
+}
+
+.merli-initial-user-info .merli-user-branches-section {
+	padding: 1em;
+}
+
+.merli-initial-user-info .merli-user-resolutions-section {
+	padding: 1em;
+}
+
+.merli-initial-user-info ul {
+	padding: 1em 2em;
+	width: 100px;
+}
+
+.merli-user-branches-section ul {
+	width: 290px;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	gap: 1.5em;
+}
+
+.merli-user-branch {
+	list-style: circle;
+	width: fit-content;
+	display: inline-block;
+	font-size: 1em;
+	background-color: #f4f6f7;
+	border-radius: 0.3em;
+	cursor: pointer;
+	transition: transform 0.3s ease;
+	box-shadow: 0 0.3em 0.4em rgba(0, 0, 0, 0.1);
+}
+
+.merli-user-branch li {
+	padding: 0.2em 0.5em;
+}
+
+.merli-user-branch-name {
+	text-transform: capitalize;
+}
+
+.merli-user-branch:hover {
+	background-color: #e5e8e8;
+	transform: scale(1.03);
+}
+
+.merli-user-resolution {
+	list-style: circle;
+	display: inline-block;
+	height: fit-content;
+	margin-bottom: 1em;
+	padding: 0.2em 0.5em;
+	font-size: 1em;
+	background-color: #f4f6f7;
+	border-radius: 0.3em;
+	cursor: pointer;
+	transition: transform 0.3s ease;
+	box-shadow: 0 0.3em 0.4em rgba(0, 0, 0, 0.1);
+}
+
+.merli-user-resolution:hover {
+	background-color: #e5e8e8;
+	transform: scale(1.03);
+}
+
+.merli-initial-user-info ul .merli-user-branch li p {
+	margin: 0;
+}
+
+.merli-initial-user-info ul .merli-user-resolution li p {
+	margin: 0;
+}
+
+.merli-bot a {
+	font-weight: bold;
+	font-style: italic;
+}
+
+.merli-bot-chat-parent {
+	display: flex;
+	flex-direction: column;
+	align-items: end;
+	justify-content: flex-end;
+	padding: 2em;
+	height: 90vh;
+	font-size: 12px;
+	letter-spacing: 0.4px;
+	line-height: 1.5;
+
+}
+
+.merli-bot-chat-container {
+	position: relative;
+	width: 450px;
+	border-radius: 8px;
+	opacity: 0.9;
+	transition: all 0.5s;
+	visibility: visible;
+	box-shadow: 4px 20px 10px rgba(0, 0, 0, 0.5);
+}
+
+.merli-bot-chat-container-alert {
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	background: white;
+	border: 3px solid #6f1f1f;
+	width: 440px;
+	height: 320px;
+	border-radius: 8px;
+	opacity: 1;
+	transition: all 0.5s;
+	visibility: visible;
+	box-shadow: 4px 20px 10px rgba(0, 0, 0, 0.5);
+}
+
+.merli-bot-chat-container-alert-buttons {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+	gap: 1em;
+}
+
+.merli-bot-container-alert-btn {
+	background: linear-gradient(89.96deg,
+			#170000 -58.42%,
+			#350a06 -24.64%,
+			#56070c 9.13%,
+			#6f1f1f 72.66%,
+			#8f3d38 91.76%,
+			#cb7169 110.46%);
+	color: white;
+	padding: 0.4em 2em;
+	border: none;
+	font-weight: bold;
+	cursor: pointer;
+}
+
+.merli-bot-container-alert-btn:hover {
+	box-shadow: 4px 4px 6px rgba(0, 0, 0, 0.5);
+}
+
+.merli-bot-chat-container-hide,
+.merli-bot-chat-container-alert-hide {
+	width: 500px;
+	border-radius: 8px;
+	opacity: 0;
+	transition: all 0.5s;
+	visibility: hidden;
+	display: none;
+}
+
+.merli-bot-initial-loader {
+	display: flex;
+	flex-direction: row;
+	align-items: center;
+	margin: 0;
+}
+
+/* ----------------------------------------
+  STYLING OPEN/CLOSE MERLI CHATBOT BUTTON 
+-------------------------------------------
+*/
+.merli-bot-button-div {
+	width: 100%;
+	display: flex;
+	justify-content: end;
+	margin-top: 20px;
+}
+
+.merli-bot-open-chat-button {
+	background-color: #8f3d38;
+	color: white;
+	border-width: 0px;
+	width: 50px;
+	height: 50px;
+	transition: all 0.2s;
+	border-radius: 100%;
+}
+
+.merli-bot-open-chat-button:hover {
+	background-color: #cb7169;
+}
+
+.merli-bot-open-chat-button:active {
+	background-color: #8f3d38;
+}
+
+/* ----------------------------------------
+    STYLING CHATBOT MESSAGES CONTAINER 
+--------------------------------------------
+*/
+/*1. STYLING NAVIGATION*/
+.merli-bot-chat-top {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	height: 40px;
+	padding: 1em;
+	border-radius: 8px 8px 0px 0px;
+	background: linear-gradient(89.96deg,
+			#e0f7fa -58.42%,
+			#b2ebf2 -24.64%,
+			#80deea 9.13%,
+			#4dd0e1 72.66%,
+			#26c6da 91.76%,
+			#00bcd4 110.46%);
+}
+
+.merli-bot-chat-top .merli-bot-chat-top-paragraph {
+	order: 1;
+	color: white;
+	font-weight: bold;
+	font-size: 15px;
+	margin: 1em 0;
+	margin-block-end: 0;
+	margin-block-start: 0;
+	padding-left: 0.4em;
+
+}
+
+.merli-bot-chat-top-buttons {
+	order: 2;
+	display: flex;
+}
+
+.merli-bot-chat-top button {
+	background-color: transparent;
+	align-items: center;
+	justify-content: center;
+	display: flex;
+	color: white;
+	border: none;
+	width: 30px;
+	height: 30px;
+	border-radius: 100%;
+}
+
+.merli-bot-chat-top button:hover {
+	background-color: #8f3d38;
+	cursor: pointer;
+}
+
+.merli-bot-chat-top button:active {
+	background-color: #6f1f1f;
+}
+
+.merli-bot-icon-chat-top {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+	align-items: center;
+}
+
+.merli-flow-option {
+	width: 40px;
+	height: 40px;
+}
+
+.merli-bot-icon-chat-top img {
+	display: flex;
+	align-items: center;
+	width: 40px;
+	height: 40px;
+	margin-right: 0.3em;
+}
+
+.merli-bot-notification {
+	padding: 0px;
+	/* border: 2px solid red; */
+}
+
+.merli-bot-notification-space {
+	padding: 2px 14px;
+	margin-top: 20px;
+}
+
+.merli-bot-notification-card {
+	box-shadow: 0.5px 0.5px 4px rgba(0, 0, 0, 0.2);
+	border-radius: 4px;
+}
+
+/*2. STYLING BOX MESSAGES*/
+
+.merli-bot-chat-bot-msg-cont {
+	background-color: white;
+	width: 100%;
+	height: 360px;
+	padding: 10px;
+	overflow-y: scroll;
+	overflow-x: hidden;
+	box-sizing: border-box;
+}
+
+.merli-bot-human-msg {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	padding-right: 10px;
+}
+
+.merli-bot-user-msg {
+	max-width: 250px;
+	padding: 0.5em 1em;
+	text-align: right;
+	word-wrap: break-word;
+	background: rgba(217, 217, 217, 1);
+	box-shadow: 0.1em 0.2em 0.3em rgba(0, 0, 0, 0.3);
+	/* box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); */
+	border-radius: 8px 0px 8px 8px;
+}
+
+.merli-bot-human-msg .hour {
+	text-align: right;
+	margin-top: 0.2em;
+	color: #959595;
+
+}
+
+.merli-bot-bot-msg {
+	display: flex;
+	flex-direction: row;
+	align-items: flex-start;
+}
+
+.merli-bot-chat-bot-msg {
+	max-width: 340px;
+	margin-top: 2em;
+	padding: 1em;
+	padding-bottom: 1.3em;
+	background: rgba(89, 200, 600, 0.1);
+	border-radius: 0px 8px 8px 8px;
+}
+
+.merli-bot-chat-bot-msg-additional-bubbles {
+	max-width: 400px;
+	padding: 1em 0.8em;
+	padding-bottom: 1.3em;
+	background: rgba(89, 200, 600, 0.1);
+	border-radius: 0px 8px 8px 8px;
+}
+
+.merli-bot-title {
+	margin: 2em 0;
+}
+
+.merli-bot-bubble-hour {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.merli-bot-bot-msg .hour {
+	margin-top: 0;
+	color: #959595;
+
+}
+
+.merli-bot-iframe {
+	border: none;
+	border-radius: 5px;
+	margin-bottom: 0.2em;
+	margin-top: 1em
+}
+
+/* Merli special button */
+
+.merli-bot-button {
+	margin-top: 10px;
+	width: 106.5px;
+}
+
+.merli-bot-button-renovacion {
+	width: 147.6px;
+}
+
+.merli-bot-button,
+.merli-bot-button-renovacion {
+
+	border: 0.08em solid #fff;
+	border-radius: 0.3em;
+	height: 2.8em;
+	text-align: center;
+	padding: 0.1em 0.25em;
+	cursor: pointer;
+	background: linear-gradient(89.96deg,
+			#170000 -58.42%,
+			#350a06 -24.64%,
+			#56070c 9.13%,
+			#6f1f1f 72.66%,
+			#8f3d38 91.76%,
+			#cb7169 110.46%);
+	margin-bottom: 10px;
+}
+
+.merli-bot-button .merli-bot-button-anchor {
+	width: 99px;
+}
+
+.merli-bot-button-renovacion .merli-bot-button-anchor {
+	width: 145, 2px;
+}
+
+.merli-bot-button .merli-bot-button-anchor,
+.merli-bot-button-renovacion .merli-bot-button-anchor {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	bottom: 0.4em;
+	height: 2.5em;
+	text-decoration: none;
+	background: linear-gradient(89.96deg,
+			#170000 -58.42%,
+			#350a06 -24.64%,
+			#56070c 9.13%,
+			#6f1f1f 72.66%,
+			#8f3d38 91.76%,
+			#cb7169 110.46%);
+	border-radius: 0.2em;
+
+	color: #fff;
+	border: 0.08em solid #fff;
+	box-shadow: 0 0.4em 0.1em 0.019em #fff;
+}
+
+.merli-bot-button .merli-bot-button-anchor:hover,
+.merli-bot-button-renovacion .merli-bot-button-anchor:hover {
+	transition: all 0.5s;
+	transform: translate(0, 0.4em);
+	box-shadow: 0 0 0 0 #fff;
+}
+
+.merli-bot-button .merli-bot-button-anchor:not(hover),
+.merli-bot-button-renovacion .merli-bot-button-anchor:not(hover) {
+	transition: all 1s;
+}
+
+.merli-bot-send-msg {
+	border-width: 0px;
+	background-color: white;
+	color: rgba(89, 103, 116, 1);
+	width: 34px;
+	height: 34px;
+	border-radius: 100%;
+}
+
+.merli-bot-send-msg:hover {
+	background-color: #eaeaea;
+}
+
+.merli-bot-send-msg:active {
+	background-color: #c8c8c8;
+}
+
+.merli-bot-buttons-send-msg-and-speaker {
+	display: flex
+}
+
+.merli-bot-react-icons {
+	width: 24px;
+	height: 24px;
+	border: none;
+	vertical-align: middle;
+}
+
+.merli-bot-msg-input {
+	padding-top: 15px;
+	width: 100%;
+	border: none;
+	background-color: white;
+	resize: none;
+}
+
+.merli-bot-msg-input:disabled {
+	background-color: white;
+}
+
+.merli-bot-msg-input:focus {
+	outline: none;
+}
+
+.merli-bot-merli img {
+	width: 38px;
+	height: 38px;
+}
+
+/*3. STYLING HUMAN INPUT*/
+
+.merli-bot-chat-bot-input {
+	padding: 5px 10px;
+	align-items: center;
+	display: flex;
+	justify-content: space-between;
+	overflow: hidden;
+	border-radius: 0px 0px 8px 8px;
+	background-color: white;
+	border-top: 1px solid #631316;
+}
+
+/*4. STYLING FORMULARIO CERTIFICADO FIRMA DIGITAL*/
+.merli-bot-container-firma-digital {
+	position: relative;
+	width: 100%;
+	height: 360px;
+	box-sizing: border-box;
+}
+
+.merli-bot-iframe-firma-digital {
+	width: 100%;
+	height: 100%;
+	box-sizing: border-box;
+}
+
+.merli-bot-close-iframe-firma-digital {
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	color: whitesmoke;
+	cursor: pointer;
+	background: rgb(147, 0, 0);
+	border: none;
+	width: 30px;
+	height: 30px;
+	border-radius: 100%;
+	top: 20px;
+	right: 20px;
+}
+
+/*5. STYLING NOVEDADES CONTAINER*/
+.merli-bot-chat-bot-msg-cont-novedades {
+	background-color: white;
+	width: 100%;
+	height: 360px;
+	padding: 10px;
+	/* overflow-y: scroll; */
+	box-sizing: border-box;
+}
+
+.merli-bot-container-novedades {
+	position: relative;
+	color: whitesmoke;
+	border-radius: 4px;
+	border: 2px solid #8f3d38;
+	height: 100%;
+}
+
+.merli-bot-container-novedades-title {
+	background: linear-gradient(89.96deg,
+			#170000 -58.42%,
+			#350a06 -24.64%,
+			#56070c 9.13%,
+			#6f1f1f 72.66%,
+			#8f3d38 91.76%,
+			#cb7169 110.46%);
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	height: 10%;
+	width: 100%;
+}
+
+.merli-bot-close-container-novedades {
+	position: absolute;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	right: 10px;
+	border-width: 0px;
+	background-color: transparent;
+	color: white;
+	width: 30px;
+	height: 30px;
+	border-radius: 100%;
+}
+
+.merli-bot-close-container-novedades:hover {
+	background-color: rgba(255, 255, 255, 0.1);
+}
+
+.merli-bot-close-container-novedades:active {
+	background: #6f1f1f;
+}
+
+.merli-bot-container-novedades-info {
+	padding: 0 60px;
+	color: black;
+	overflow-y: scroll;
+	height: 89%;
+}
+
+.merli-bot-alert-icon {
+	width: 50px;
+	height: 15px;
+	color: #170000;
+}
+
+.merli-bot-container-novedades-info-buttons {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	position: absolute;
+	box-sizing: border-box;
+	top: 50%;
+	left: 0;
+	padding: 0 1em;
+}
+
+.merli-bot-alert-buttons {
+	border-width: 0px;
+	background-color: transparent;
+	color: #6f1f1f;
+	/* width: 80px;
+	height: 80px; */
+	border-radius: 100%
+}
+
+.merli-bot-react-icons-buttons-alert {
+	width: 35px;
+	height: 35px;
+	opacity: 60%;
+	cursor: pointer;
+}
+
+.merli-bot-chat-top-notification-button {
+	position: relative;
+}
+
+.merli-bot-chat-top-notification-button-dot-block {
+	position: absolute;
+	width: 8px;
+	height: 8px;
+	background-color: red;
+	border-radius: 100%;
+	right: 3px;
+	top: 3px
+}
+
+.merli-bot-chat-top-notification-button-dot-none {
+	display: none;
+}
+
+.merli-bot-react-icons-buttons-alert:hover {
+	opacity: 100%;
+}
+
+/* .merli-bot-alert-buttons:hover {
+	color: #8f3d38;
+	cursor: pointer;
+} */
+
+/*-----------------------------------
+      STYLING MERLI CHATBOT COLORS 
+-------------------------------------      
+*/
+.merli-bot-merli-color {
+	color: #7a0a1e;
+}
+
+.merli-bot-pymes-color {
+	color: #d31c16;
+}
+
+.merli-bot-plus-color {
+	color: #221c48;
+}
+
+/* ----------------------------------
+    STYLING SUBSCRIPTION PLANS 
+-------------------------------------      
+*/
+
+.merli-bot-container-renovacion {
+	display: flex;
+	flex-direction: column;
+	line-height: 1.3;
+	margin-bottom: 1.2em;
+	padding: 1em;
+	box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+	background: white;
+	border-radius: 0.3em;
+	border-bottom: 1px solid black;
+}
+
+.merli-bot-container-renovacion-adicional {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: end;
+	padding-top: 1em;
+}
+
+.merli-bot-renovacion-general {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: end;
+	margin-top: 0;
+}
+
+.price,
+.merli-bot-users-price,
+.merli-bot-companies-price {
+	color: #7a0a1e;
+	font-weight: bold;
+}
+
+.merli-bot-renovacion-paragraph {
+	margin: 0;
+	max-width: 250px;
+	font-size: 10.4px;
+	font-weight: bold;
+	font-style: italic;
+}
+
+.merli-bot-container-renovacion .merli-bot-renovacion-general .price,
+.merli-bot-users-price {
+	font-weight: bold;
+}
+
+.merli-bot-users,
+.merli-bot-companies {
+	margin-top: 1em;
+	font-weight: bold;
+	font-style: italic;
+}
+
+/* ------------------------ 
+    STYLING MEDIA QUERIES 
+---------------------------
+*/
+
+@media (height >=700px) {
+
+	.merli-bot-chat-bot-msg-cont,
+	.merli-bot-chat-bot-msg-cont-novedades,
+	.merli-bot-container-firma-digital,
+	.merli-bot-chat-container-alert {
+		height: 380px;
+	}
+
+}
+
+@media (height >=750px) {
+
+	.merli-bot-chat-bot-msg-cont,
+	.merli-bot-chat-bot-msg-cont-novedades,
+	.merli-bot-container-firma-digital,
+	.merli-bot-chat-container-alert {
+		height: 400px;
+	}
+
+}
+
+@media (height >=800px) {
+
+	.merli-bot-chat-bot-msg-cont,
+	.merli-bot-chat-bot-msg-cont-novedades,
+	.merli-bot-container-firma-digital,
+	.merli-bot-chat-container-alert {
+		height: 440px;
+	}
+}
+
+@media (max-width: 525px) {
+	.merli-bot-chat-container {
+		width: 85vw;
+		margin-bottom: 25%;
+		font-size: 0.6rem;
+	}
+
+	.merli-initial-user-info {
+		width: 70vw;
+	}
+
+	.merli-bot-chat-bot-input .merli-bot-msg-input {
+		font-size: 0.75rem;
+	}
+
+	.merli-bot-chat-bot-msg {
+		max-width: 65vw;
+	}
+}

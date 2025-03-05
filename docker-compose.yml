@@ -1,0 +1,15 @@
+services:
+  backend:
+    build:
+      context: ./backend  # Build from Dockerfile in the current directory
+    env_file:
+      - ./backend/.env
+    network_mode: "bridge"
+    ports:
+      - "127.0.0.1:8000:8000"
+
+  frontend:
+    build:
+      context: ./frontend
+    ports:
+      - "127.0.0.1:3000:80"
