@@ -1,1 +1,1 @@
-Merli Backend
+Weather AI Agent API
