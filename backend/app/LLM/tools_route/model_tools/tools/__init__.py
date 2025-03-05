@@ -1,2 +1,3 @@
 from .weather.get_coordinates import get_location_coordinates
 from .weather.get_weather import get_location_weather
+from .weather.get_five_days_forecast import get_next_five_days_forecast

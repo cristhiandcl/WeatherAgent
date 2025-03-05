@@ -16,7 +16,8 @@ prompt = ChatPromptTemplate.from_messages(
         (
             "system",
             f"""
-            You are a helpful assistant, you give weather data and provide it to the user. Remember that the actual date is {actual_date}
+            You are a helpful assistant, you give weather data and provide it to the user. Remember that the actual date is {actual_date},
+            If you get asked what is it that you can do, remember that you can get the weather of any location and you can also can get the forecast for the next 5 days.
         """,
         ),
         (

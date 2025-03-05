@@ -4,11 +4,13 @@ from typing import Callable
 
 from app.LLM.tools_route.model_tools.tools import (
     get_location_coordinates,
-    get_location_weather
+    get_location_weather,
+    get_next_five_days_forecast
 )
 
 # model_functions Dictionary
 tools: list[Callable] = [
     get_location_coordinates,
-    get_location_weather
+    get_location_weather,
+    get_next_five_days_forecast
 ]

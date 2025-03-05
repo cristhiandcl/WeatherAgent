@@ -47,6 +47,3 @@ async def agent_answer(
                 answer += content
                 yield content
     interactions.append(AIMessage(content=answer))
-
-    print("Answer:", answer)
-    print("Memory", interactions)
